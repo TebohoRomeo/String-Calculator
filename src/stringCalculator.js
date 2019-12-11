@@ -2,24 +2,38 @@
 
 module.exports = class StringCalculator {
    
+    constructor() {
+        this.reg = /\d{1,}/gm;
+
+        this.haveNegative = function(string) {
+            let str = "";
+            for(let i = 0; i < string.length; i++) {
+                if(string[i] == "-" && !isNaN(string[i+1])) {
+                    str += string[i+1] + ", ";
+                }
+            }
+            return str;
+        }
+    }
 
     Add(string) {
 
         
         let sum = 0;
         let str = string.match(this.reg);
+        let negatives = this.haveNegative(string);
         
 
         // Should catch an error if theres a negative
         try {
-            if(string.includes("-")) throw ("Negatives " + negative + "not allowed.");
+            if(string.includes("-")) throw ("Negatives " + negatives + "not allowed.");
         } 
         catch (error) {
             return error;
         }
         //should return 0 not NAN if a string is empty
         if(string == "") {
-            return 0;
+            return 0; 
         } 
         // Ignores an numbers that exceeds 1000 .e.g from 1001 upwards
         else {
@@ -36,21 +50,6 @@ module.exports = class StringCalculator {
             }
 
             return sum;
-        }
-    }
-
-
-    constructor() {
-        this.reg = /\d{1,}/gm;
-
-        this.haveNegative = function(string) {
-            let str = "";
-            for(let i = 0; i < string.length; i++) {
-                if(string[i] == "-" && !isNaN(string[i+1])) {
-                    str += string[i+1] + ", ";
-                }
-            }
-            return str;
         }
     }
 }
