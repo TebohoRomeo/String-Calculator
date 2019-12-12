@@ -30,10 +30,10 @@ describe("StringCalculator()", function(){
         expect(strCalc.Add("2,1001")).toEqual(2);
     });
 
-    console.log(strCalc.Add("-1, -2, 3, 4"));
+    // console.log(strCalc.Add("-1, -2, 3, 4"));
 
     it("should throw exception if input is negative numbers", function(){
-        expect(strCalc.Add("-1,-2,3,4"))
+        expect(strCalc.Add("-1,-2,3,4")).toBe(false)
     })
 
     it("Should support delimeters of any length", function(){
