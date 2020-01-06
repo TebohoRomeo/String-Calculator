@@ -8,8 +8,9 @@ module.exports = class StringCalculator {
         this.haveNegative = function(string) {
             let str = "";
             for(let i = 0; i < string.length; i++) {
+                // if string contains a negative and is a Number adds them to variable str
                 if(string[i] == "-" && !isNaN(string[i+1])) {
-                    str += string[i+1] + ", ";
+                    str += string[i+1] + ", "; // it returns only the signs
                 }
             }
             return str;
@@ -18,10 +19,14 @@ module.exports = class StringCalculator {
 
     Add(string) {
 
-        
+        // declare a new variable
         let sum = 0;
+
+        // assigned  new variable str to string and matched it to regex.
         let str = string.match(this.reg);
-        let negatives = this.haveNegative(string);
+        
+        // declared new variable to our negative methods
+        let negatives = this.haveNegative(string); 
         
 
         // Should catch an error if theres a negative
@@ -31,6 +36,7 @@ module.exports = class StringCalculator {
         catch (error) {
             return error;
         }
+
         //should return 0 not NAN if a string is empty
         if(string == "") {
             return 0; 
